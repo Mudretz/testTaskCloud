@@ -15,7 +15,7 @@ const ModalSuccess: FC<Props> = ({ active, setActive, message }) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate("/");
+        navigate("/testTaskCloud");
     };
 
     return (

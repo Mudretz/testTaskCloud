@@ -23,6 +23,7 @@ const PersonalInfoPage:FC = () => {
         resolver: yupResolver(schemaPersonalInfo)
     });
     const { handleSubmit, formState: { errors } } = methods;
+    console.log(errors);
     const createUserData = useAppSelector(getCreateUserData);
 
     const onSubmit = (data: FormData): void => {
@@ -66,7 +67,7 @@ const PersonalInfoPage:FC = () => {
                             defaultValue={createUserData.sex}
                             options={sexOptions}
                         />
-                        <p className={style.error}>{errors.sex?.message || ""}</p>
+                        <p className={style.error}>{errors.sex?.label?.message || ""}</p>
                     </div>
                     <div className={style.buttons_group}>
                         <ButtonBack

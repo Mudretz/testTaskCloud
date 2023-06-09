@@ -8,7 +8,7 @@ function App() {
     return (
         <div className="container">
             <Routes>
-                <Route path="/" element={<AuthorizationPage />} />
+                <Route path="/testTaskCloud" element={<AuthorizationPage />} />
                 <Route path="/create" element={<CreateUserPage />} />
             </Routes>
         </div>
