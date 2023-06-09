@@ -1,0 +1,55 @@
+@import "../../../constants/colors.scss";
+
+.header {
+    height: 129px;
+    border-bottom: 1px solid $black-8;
+    display: flex;
+    column-gap: 24px;
+    align-items: center;
+
+    @media screen and (max-width: 450px) {
+        width: 100%;
+    }
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    background-color: $azure;
+    border-radius: 50%;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.link_list {
+    margin-top: 8px;
+    display: flex;
+    column-gap: 16px;
+    font-size: 12px;
+
+    @media screen and (max-width: 450px) {
+       flex-direction: column;
+    }
+
+    .link_list_item {
+        display: flex;
+        column-gap: 6px;
+        align-items: center;
+
+        img {
+            width: 16px;
+            height: 16px;
+        }
+    
+        a {
+            color: $purple;
+        }
+    }
+}

@@ -1,0 +1,3 @@
+interface IStepState {
+    step: number
+};

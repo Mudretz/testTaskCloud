@@ -1,0 +1,33 @@
+@import "../../../constants/colors.scss";
+
+.steper {
+    margin-bottom: 70px;
+    width: 100%;
+    min-height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    
+    .line_first {
+        position: absolute;
+        width: 50%;
+        left: 1%;
+        background-color: $black-8;
+        height: 8px;
+        z-index: 0;
+    }
+
+    .line_second {
+        position: absolute;
+        width: 50%;
+        right: 1%;
+        background-color: $black-8;
+        height: 8px;
+        z-index: 0;
+    }
+
+    .completed {
+        background-color: $purple;
+    }
+}

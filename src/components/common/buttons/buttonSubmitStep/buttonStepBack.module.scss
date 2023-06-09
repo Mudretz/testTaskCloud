@@ -1,0 +1,9 @@
+@import "../../../../constants/colors.scss";
+
+.button {
+    padding: 12px 16px;
+    background-color: $white;
+    color: $purple;
+    border: 1.5px solid $purple;
+    border-radius: 4px;
+}

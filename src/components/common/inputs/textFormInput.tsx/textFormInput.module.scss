@@ -1,0 +1,13 @@
+@import "../../../../constants/colors.scss";
+
+.form_item {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    min-height: 110px;
+}
+
+.error {
+    color: $error;
+}

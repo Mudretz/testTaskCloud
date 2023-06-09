@@ -1,0 +1,18 @@
+@import "../src/constants/colors.scss";
+
+.container {
+    padding-top: 24px;
+    width: 100vw;
+    height: 100vh;
+    background-color: $grey;
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    color: $text-color;
+}
+
+.react-select { 
+    &__indicator-separator {
+        width: 0px !important;
+    }
+}

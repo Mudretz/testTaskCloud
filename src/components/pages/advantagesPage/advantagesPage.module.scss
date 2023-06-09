@@ -1,0 +1,61 @@
+@import "../../../constants/colors.scss";
+
+.form {
+    margin-top: 24px;
+}
+
+.form_item {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    min-height: 110px;
+}
+
+.error {
+    color: $error;
+}
+
+.error_input {
+    margin-top: 5px;
+    color: $error;
+}
+
+.delete {
+    margin-left: 19px;
+    cursor: pointer;
+}
+
+.checkbox {
+    margin-top: 24px;
+}
+
+.input_list {
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    margin-right: 10px;
+}
+
+.plus_icon {
+    margin-top: 20px;
+    width: 44px;
+    height: 44px;
+    border: 1.5px solid $purple;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.buttons_group {
+    display: flex;
+    justify-content: space-between;
+}

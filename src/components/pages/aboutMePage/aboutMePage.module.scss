@@ -1,0 +1,30 @@
+@import "../../../constants/colors.scss";
+
+.form_item {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+}
+
+.text_area {
+    padding: 12px 12px 12px 12px;
+    width: 680px;
+    height: 84px;
+    border: 1.5px solid $black-16;
+    border-radius: 4px;
+    resize: none;
+
+    &:focus {
+        outline-color: $purple;
+    }
+
+    @media screen and (max-width: 450px) {
+        width: 80%;
+    }
+}
+
+.buttons_group {
+    margin-top: 90px;
+    display: flex;
+    justify-content: space-between;
+}

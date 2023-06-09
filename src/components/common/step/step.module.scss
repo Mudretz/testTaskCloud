@@ -1,0 +1,37 @@
+@import "../../../constants/colors.scss";
+
+.step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.step_item {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: $step-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.active {
+    background-color: $purple;
+}
+
+.dot {
+    height: 3.2px;
+    width: 3.2px;
+    border-radius: 50%;
+    background-color: $white;
+}
+
+.number {
+    margin-top: 24px;
+    color: $text-step-color;
+    position: absolute;
+}
