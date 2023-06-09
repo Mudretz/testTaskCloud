@@ -21,7 +21,7 @@ const HeaderAuth: FC = () => {
                     </div>
                     <div className={style.link_list_item}>
                         <img src={folderIcon} alt="иконка папки"/>
-                        <a href="" target="_blank">Resume</a>
+                        <a href="https://drive.google.com/file/d/153dgWLtZdWHyFZxc0F5n6L7b98hP7u-O/view?usp=sharing" target="_blank">Resume</a>
                     </div>
                 </div>
             </div>
