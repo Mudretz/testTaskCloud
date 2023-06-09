@@ -41,10 +41,10 @@ const dataSlice = createSlice({
             state.advantagesData = action.payload;
         },
         aboutMeReceved: (state, action: PayloadAction<string>) => {
-            state.aboutMeData = action.payload
+            state.aboutMeData = action.payload;
         },
         clearStateData: (state) => {
-            return state = initialState
+            Object.assign(state, initialState);
         }
     }
 });

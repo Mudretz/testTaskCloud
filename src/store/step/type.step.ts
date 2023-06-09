@@ -1,3 +1,3 @@
 interface IStepState {
-    step: number
+    entities: number
 };
