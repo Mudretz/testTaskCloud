@@ -1,4 +1,4 @@
-# Тестовое задание для поступления в FrontCloudCamp
+# Тестовое задание
 
 Стек техногологий: HTML, CSS, SCSS, SCSS modules, TypeScript, React, Redux Toolkit. <br/>
 Библиотеки: React hook form, ClassNames(clsx), Material UI, React transition group.<br/>
