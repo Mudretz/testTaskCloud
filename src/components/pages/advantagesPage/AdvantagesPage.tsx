@@ -50,7 +50,6 @@ const AdvantagesPage: FC = () => {
                         <div key={field.id}>
                             <TextInput
                                 name={`advantages[${index}].advantage`}
-                                defaultValue=""
                                 placeHolder="Placeholder"
                                 id={field.id}
                             />

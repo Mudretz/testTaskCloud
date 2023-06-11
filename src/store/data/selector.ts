@@ -12,3 +12,7 @@ export const getCreateUserData = (state: RootState): ICreateUserData => {
 export const getAdvantagesData = (state: RootState): IAdvantagesData => {
     return state.data.advantagesData;
 };
+
+export const getAboutMeData = (state: RootState): string => {
+    return state.data.aboutMeData;
+};

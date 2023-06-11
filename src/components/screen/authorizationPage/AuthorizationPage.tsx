@@ -17,13 +17,18 @@ import style from "./authorizationPage.module.scss";
 type FormData = yup.InferType<typeof authorizationSchema>;
 
 const AuthorizationPage: FC = () => {
-    const methods = useForm<FormData>({
-            resolver: yupResolver(authorizationSchema)
-        });
-    const { handleSubmit, formState: { errors } } = methods;
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const authData = useAppSelector(getAuthData);
+    const methods = useForm<FormData>({
+            defaultValues: {
+                phone: authData.phone,
+                email: authData.email
+            },
+            resolver: yupResolver(authorizationSchema)
+        });
+    const { handleSubmit, formState: { errors } } = methods;
+
 
     const onSubmit = (data: FormData): void => {
         dispatch(authReceved(data));
@@ -41,7 +46,6 @@ const AuthorizationPage: FC = () => {
                             <p>Номер телефона</p>
                             <MaskPhoneInput
                                 name="phone"
-                                defaultValue={authData.phone}
                             />
                             <p className={style.error}>{errors.phone?.message || ""}</p>
                         </div>
@@ -49,7 +53,6 @@ const AuthorizationPage: FC = () => {
                             id="field-email"
                             name="Email"
                             nameInput="email"
-                            defaultValue={authData.email}
                             placeHolder="tim.jennings@example.com"
                             errorMessage={errors.email?.message || ""}
                         />

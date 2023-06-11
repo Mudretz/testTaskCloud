@@ -9,21 +9,16 @@ type Props = {
     options: Array<{
         value: string,
         label: string
-    }>,
-    defaultValue: {
-        value: string,
-        label: string
-    }
+    }>
 };
 
-const SelectInput: FC<Props> = ({ name, placeHolder, id, options, defaultValue}) => {
+const SelectInput: FC<Props> = ({ name, placeHolder, id, options }) => {
     const { control } = useFormContext();
 
     return (
         <Controller
             control={control}
             name={name}
-            defaultValue={defaultValue}
             render={({
                 field: { value, onChange }
             }) => (

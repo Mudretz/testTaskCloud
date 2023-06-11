@@ -20,13 +20,18 @@ import ButtonBack from "../../common/buttons/buttonBack/buttonBack";
 export type FormData = yup.InferType<typeof personalInfoSchema>;
 
 const PersonalInfoPage:FC = () => {
+    const createUserData = useAppSelector(getCreateUserData);
     const dispatch = useDispatch();
     const methods = useForm<FormData>({
+        defaultValues: {
+            nickname: createUserData.nickname,
+            name: createUserData.name,
+            sername: createUserData.sername,
+            sex: createUserData.sex
+        },
         resolver: yupResolver(personalInfoSchema)
     });
     const { handleSubmit, formState: { errors } } = methods;
-    console.log(errors);
-    const createUserData = useAppSelector(getCreateUserData);
 
     const onSubmit = (data: FormData): void => {
         dispatch(createUserReceved(data));
@@ -40,7 +45,6 @@ const PersonalInfoPage:FC = () => {
                         id="field-nickname"
                         name="Nickname"
                         nameInput="nickname"
-                        defaultValue={createUserData.nickname}
                         placeHolder="Placeholder"
                         errorMessage={errors.nickname?.message || ""}
                     />
@@ -48,7 +52,6 @@ const PersonalInfoPage:FC = () => {
                         id="field-name"
                         name="Name"
                         nameInput="name"
-                        defaultValue={createUserData.name}
                         placeHolder="Placeholder"
                         errorMessage={errors.name?.message || ""}
                     />
@@ -56,7 +59,6 @@ const PersonalInfoPage:FC = () => {
                         id="field-sername"
                         name="Sername"
                         nameInput="sername"
-                        defaultValue={createUserData.sername}
                         placeHolder="Placeholder"
                         errorMessage={errors.sername?.message || ""}
                     />
@@ -66,7 +68,6 @@ const PersonalInfoPage:FC = () => {
                             id="field-sex"
                             name="sex"
                             placeHolder="Не выбрано"
-                            defaultValue={createUserData.sex}
                             options={sexOptions}
                         />
                         <p className={style.error}>{errors.sex?.label?.message || ""}</p>

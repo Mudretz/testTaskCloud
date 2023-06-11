@@ -2,15 +2,17 @@ import { FC, useState } from "react";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useAppDispatch } from "../../../store/hook/hook";
+import { useAppDispatch, useAppSelector } from "../../../store/hook/hook";
 import { aboutMeReceved, clearStateData } from "../../../store/data/data";
 import { aboutMeSchema, maxStringCount} from "../../../constants/schema/aboutMePageSchema";
+import { usePostDataMutation } from "../../../services/apiReduxQuery";
+import { getAboutMeData } from "../../../store/data/selector";
 import ButtonStepBack from "../../common/buttons/buttonSubmitStep/ButtonStepBack";
 import ButtonSubmit from "../../common/buttons/buttonSubmit/ButtonSubmit";
 import ModalSuccess from "../../ui/modalSuccess/ModalSuccess";
 import ModalError from "../../ui/modalError/ModalError";
 import style from "./aboutMePage.module.scss";
-import { usePostDataMutation } from "../../../services/apiReduxQuery";
+
 
 type FormData = yup.InferType<typeof aboutMeSchema>;
 
@@ -18,9 +20,13 @@ const AboutMePage: FC = () => {
     const [active, setActive] = useState<boolean>(false);
     const [message, setMessage] = useState<string>("");
     const [ postData, { isSuccess, isError } ] = usePostDataMutation();
+    const aboutMeData = useAppSelector(getAboutMeData);
     const dispatch = useAppDispatch();
     const { register, handleSubmit } = useForm<FormData>({
-        resolver: yupResolver(aboutMeSchema)
+        resolver: yupResolver(aboutMeSchema),
+        defaultValues: {
+            about: aboutMeData
+        }
     });
     const [stringCount, setStringCount] = useState(0);
 

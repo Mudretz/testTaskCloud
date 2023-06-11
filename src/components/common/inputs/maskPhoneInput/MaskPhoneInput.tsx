@@ -4,17 +4,15 @@ import { Controller, useFormContext } from "react-hook-form";
 import MaskedInput from "react-text-mask";
 
 type Props = {
-    name: string,
-    defaultValue: string
+    name: string
 };
 
-const MaskPhoneInput: FC<Props> = ({ name, defaultValue }) => {
+const MaskPhoneInput: FC<Props> = ({ name }) => {
     const { control } = useFormContext();
 
     return (
         <Controller
             control={control}
-            defaultValue={defaultValue}
             name={name}
             render={({
                 field: { onChange, value}

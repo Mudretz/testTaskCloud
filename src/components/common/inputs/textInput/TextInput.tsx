@@ -4,12 +4,11 @@ import style from "./textInput.module.scss";
 
 type Props = {
     name: string,
-    defaultValue: string,
     placeHolder: string,
     id: string
 };
 
-const TextInput: FC<Props> = ({ id, name, defaultValue, placeHolder }) => {
+const TextInput: FC<Props> = ({ id, name, placeHolder }) => {
     const { register } = useFormContext();
     return (
         <input
@@ -17,7 +16,6 @@ const TextInput: FC<Props> = ({ id, name, defaultValue, placeHolder }) => {
             className={style.input}
             type="text"
             placeholder={placeHolder}
-            defaultValue={defaultValue}
             {...register(name, {
                 required: "Поле обязательно для заполнения"
             })}
