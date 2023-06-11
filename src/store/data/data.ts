@@ -34,13 +34,13 @@ const dataSlice = createSlice({
         authReceved: (state, action: PayloadAction<IAuthData>) => {
             state.authData = action.payload;
         },
-        createUserReceved: (state, action: PayloadAction<ICreateUserData>) => {
+        createUserReceived: (state, action: PayloadAction<ICreateUserData>) => {
             state.createUserData = action.payload;
         },
-        advantagesReceved: (state, action: PayloadAction<IAdvantagesData>) => {
+        advantagesReceived: (state, action: PayloadAction<IAdvantagesData>) => {
             state.advantagesData = action.payload;
         },
-        aboutMeReceved: (state, action: PayloadAction<string>) => {
+        aboutMeReceived: (state, action: PayloadAction<string>) => {
             state.aboutMeData = action.payload;
         },
         clearStateData: (state) => {
@@ -52,9 +52,9 @@ const dataSlice = createSlice({
 const { reducer: dataReducer, actions } = dataSlice;
 export const {
     authReceved,
-    createUserReceved,
-    advantagesReceved,
-    aboutMeReceved,
+    createUserReceived,
+    advantagesReceived,
+    aboutMeReceived,
     clearStateData 
 } = actions;
 

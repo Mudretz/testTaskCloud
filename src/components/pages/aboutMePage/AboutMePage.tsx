@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAppDispatch, useAppSelector } from "../../../store/hook/hook";
-import { aboutMeReceved, clearStateData } from "../../../store/data/data";
+import { aboutMeReceived, clearStateData } from "../../../store/data/data";
 import { aboutMeSchema, maxStringCount} from "../../../constants/schema/aboutMePageSchema";
 import { usePostDataMutation } from "../../../services/apiReduxQuery";
 import { getAboutMeData } from "../../../store/data/selector";
@@ -19,6 +19,7 @@ type FormData = yup.InferType<typeof aboutMeSchema>;
 const AboutMePage: FC = () => {
     const [active, setActive] = useState<boolean>(false);
     const [message, setMessage] = useState<string>("");
+    const [stringCount, setStringCount] = useState(0);
     const [ postData, { isSuccess, isError } ] = usePostDataMutation();
     const aboutMeData = useAppSelector(getAboutMeData);
     const dispatch = useAppDispatch();
@@ -28,7 +29,6 @@ const AboutMePage: FC = () => {
             about: aboutMeData
         }
     });
-    const [stringCount, setStringCount] = useState(0);
 
     const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         const inputText = e.target.value;
@@ -36,7 +36,7 @@ const AboutMePage: FC = () => {
     };
 
     const onSubmit = async (data: FormData) => {
-        dispatch(aboutMeReceved(data.about));
+        dispatch(aboutMeReceived(data.about));
         try {
             const result = await postData({}).unwrap();
             if (result.status === "success") {

@@ -3,7 +3,12 @@ enum Sex {
     woman = "Woman"
 };
 
-export const sexOptions = Object.values(Sex).map(item => ({
-    value: `field-sex-option-${item}`,
+interface ISexOption {
+    value: string;
+    label: Sex;
+};
+
+export const sexOptions: ISexOption[] = Object.values(Sex).map(item => ({
+    value: item,
     label: item
 }));

@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../../store/hook/hook";
 import { checkboxData, radioGroupData } from "../../../constants/dataInput";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { getAdvantagesData } from "../../../store/data/selector";
-import { advantagesReceved } from "../../../store/data/data";
+import { advantagesReceived } from "../../../store/data/data";
 import { stepIncrease } from "../../../store/step/step";
 import { advantagesPageSchema } from "../../../constants/schema/advantagesPageSchema";
 import TextInput from "../../common/inputs/textInput/TextInput";
@@ -37,7 +37,7 @@ const AdvantagesPage: FC = () => {
     });
         
     const onSubmit = (data: FormData) => {
-        dispatch(advantagesReceved(data));
+        dispatch(advantagesReceived(data));
         dispatch(stepIncrease());
     };
 

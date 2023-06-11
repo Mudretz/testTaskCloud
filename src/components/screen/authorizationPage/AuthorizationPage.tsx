@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../../store/hook/hook";
 import { getAuthData } from "../../../store/data/selector";
 import { authReceved } from "../../../store/data/data";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { stepReceved } from "../../../store/step/step";
+import { stepReceived } from "../../../store/step/step";
 import { authorizationSchema } from "../../../constants/schema/authorizationPageSchema";
 import HeaderAuth from "../../layouts/HeaderAuth/HeaderAuth";
 import ButtonSubmit from "../../common/buttons/buttonSubmit/ButtonSubmit";
@@ -29,10 +29,9 @@ const AuthorizationPage: FC = () => {
         });
     const { handleSubmit, formState: { errors } } = methods;
 
-
     const onSubmit = (data: FormData): void => {
         dispatch(authReceved(data));
-        dispatch(stepReceved(1));
+        dispatch(stepReceived(1));
         navigate("/create");
     };
 

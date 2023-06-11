@@ -5,17 +5,15 @@ import { useAppSelector } from "../../../store/hook/hook";
 import { useDispatch } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { getCreateUserData } from "../../../store/data/selector";
-import { createUserReceved } from "../../../store/data/data";
+import { createUserReceived } from "../../../store/data/data";
 import { stepIncrease } from "../../../store/step/step";
 import { sexOptions } from "../../../constants/sexOptions";
 import { personalInfoSchema } from "../../../constants/schema/personalnfoSchema";
 import ButtonSubmit from "../../common/buttons/buttonSubmit/ButtonSubmit";
-
+import ButtonBack from "../../common/buttons/buttonBack/ButtonBack";
 import TextFormInput from "../../common/inputs/textFormInput.tsx/TextFormInput";
 import SelectInput from "../../common/inputs/select/SelectInput";
 import style from "./personalInfoPage.module.scss";
-import ButtonBack from "../../common/buttons/buttonBack/buttonBack";
-
 
 export type FormData = yup.InferType<typeof personalInfoSchema>;
 
@@ -34,7 +32,7 @@ const PersonalInfoPage:FC = () => {
     const { handleSubmit, formState: { errors } } = methods;
 
     const onSubmit = (data: FormData): void => {
-        dispatch(createUserReceved(data));
+        dispatch(createUserReceived(data));
         dispatch(stepIncrease());
     };
 

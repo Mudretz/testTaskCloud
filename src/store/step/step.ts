@@ -8,7 +8,7 @@ const stepSlice = createSlice({
     name: "step",
     initialState,
     reducers: {
-        stepReceved: (state, action: PayloadAction<number>) => {
+        stepReceived: (state, action: PayloadAction<number>) => {
             state.entities = action.payload
         },
         stepIncrease: (state) => {
@@ -21,7 +21,7 @@ const stepSlice = createSlice({
 });
 
 const { reducer: stepReducer, actions } = stepSlice;
-export const { stepReceved, stepIncrease, stepDecrease } = actions;
+export const { stepReceived, stepIncrease, stepDecrease } = actions;
 
 export default stepReducer;
 
