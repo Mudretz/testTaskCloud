@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState: IStepState = {
     entities: 1
-}
+};
 
 const stepSlice = createSlice({
     name: "step",
