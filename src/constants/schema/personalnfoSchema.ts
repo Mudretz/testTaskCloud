@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const schemaPersonalInfo = yup.object({
+export const personalInfoSchema = yup.object({
     nickname: 
         yup
             .string()

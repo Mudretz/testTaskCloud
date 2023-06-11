@@ -24,10 +24,9 @@ const ModalSuccess: FC<Props> = ({ active, setActive, message }) => {
                 <p>{message}</p>
                 <img src={successIcon} alt="успешно" />
                 <div onClick={handleClick}>
-                    <ButtonSubmit
-                        id="button-to-main"
-                        text="На главную"
-                    />
+                    <ButtonSubmit id="button-to-main">
+                        На главную
+                    </ButtonSubmit>
                 </div>
             </div>
         </Modal>

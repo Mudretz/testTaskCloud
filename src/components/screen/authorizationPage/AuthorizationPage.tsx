@@ -6,19 +6,19 @@ import { useAppDispatch, useAppSelector } from "../../../store/hook/hook";
 import { getAuthData } from "../../../store/data/selector";
 import { authReceved } from "../../../store/data/data";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schemaAuth } from "../../../constants/schema/authorizationPageSchema";
 import { stepReceved } from "../../../store/step/step";
+import { authorizationSchema } from "../../../constants/schema/authorizationPageSchema";
 import HeaderAuth from "../../layouts/HeaderAuth/HeaderAuth";
 import ButtonSubmit from "../../common/buttons/buttonSubmit/ButtonSubmit";
 import TextFormInput from "../../common/inputs/textFormInput.tsx/TextFormInput";
 import MaskPhoneInput from "../../common/inputs/maskPhoneInput/MaskPhoneInput";
 import style from "./authorizationPage.module.scss";
 
-type FormData = yup.InferType<typeof schemaAuth>;
+type FormData = yup.InferType<typeof authorizationSchema>;
 
 const AuthorizationPage: FC = () => {
     const methods = useForm<FormData>({
-            resolver: yupResolver(schemaAuth)
+            resolver: yupResolver(authorizationSchema)
         });
     const { handleSubmit, formState: { errors } } = methods;
     const navigate = useNavigate();
@@ -53,10 +53,9 @@ const AuthorizationPage: FC = () => {
                             placeHolder="tim.jennings@example.com"
                             errorMessage={errors.email?.message || ""}
                         />
-                        <ButtonSubmit
-                            id="button-start"
-                            text="Начать"
-                        />
+                        <ButtonSubmit id="button-start">
+                            Начать
+                        </ButtonSubmit>
                     </form>
                 </FormProvider>
             </main>

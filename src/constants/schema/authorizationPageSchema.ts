@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const schemaAuth = yup.object({
+export const authorizationSchema = yup.object({
     phone: 
         yup
             .string()

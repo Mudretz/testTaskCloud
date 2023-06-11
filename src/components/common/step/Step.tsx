@@ -1,6 +1,7 @@
 import { FC } from "react";
-import style from "./step.module.scss";
+import classNames from "classnames";
 import vectorIcons from "../../../assets/vector.svg";
+import style from "./step.module.scss";
 
 type Props = {
     isCompleted: boolean,
@@ -11,7 +12,10 @@ type Props = {
 const Step: FC<Props> = ({ step, isCompleted, isActive }) => {
     return (
         <div className={style.step}>
-            <div className={`${style.step_item} ${(isActive || isCompleted)&& style.active}`}>
+            <div className={classNames(style.step_item,
+                    { [style.active]: isActive || isCompleted })
+                }
+            >
                 {isActive &&
                     <div className={style.dot}></div>
                 }

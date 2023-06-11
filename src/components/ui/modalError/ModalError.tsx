@@ -21,10 +21,9 @@ const ModalError: FC<Props> = ({ active, setActive }) => {
                 <p>Ошибка</p>
                 <img src={errorIcon} alt="успешно" />
                 <div className={style.button} onClick={handleClick}>
-                    <ButtonSubmit
-                        id="button-to-main"
-                        text="Закрыть"
-                    />
+                    <ButtonSubmit id="button-to-main">
+                        Закрыть
+                    </ButtonSubmit>
                 </div>
             </div>
         </Modal>

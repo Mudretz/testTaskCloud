@@ -4,10 +4,10 @@ import style from "./buttonBack.module.scss";
 
 type Props = {
     id: string,
-    text: string
+    children: string
 };
 
-const ButtonBack: FC<Props> = ({ id, text }) => {
+const ButtonBack: FC<Props> = ({ id, children }) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -21,7 +21,7 @@ const ButtonBack: FC<Props> = ({ id, text }) => {
             className={style.button}
             id={id}
         >
-            {text}
+            {children}
         </button>
     );
 }

@@ -5,10 +5,10 @@ import style from "./buttonStepBack.module.scss";
 
 type Props = {
     id: string,
-    text: string
+    children: string
 };
 
-const ButtonStepBack: FC<Props> = ({ id, text }) => {
+const ButtonStepBack: FC<Props> = ({ id, children }) => {
     const dispatch = useAppDispatch();
 
     const handleClick = () => {
@@ -22,7 +22,7 @@ const ButtonStepBack: FC<Props> = ({ id, text }) => {
             id={id}
             onClick={handleClick}
         >
-            {text}
+            {children}
         </button>
     );
 }

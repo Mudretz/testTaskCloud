@@ -1,21 +1,18 @@
-import { FC } from "react";
+import { FC, PropsWithChildren } from "react";
+import classNames from "classnames";
 import styles from "./modalWindow.module.scss";
 
 type Props = {
     active: boolean,
     setActive: React.Dispatch<React.SetStateAction<boolean>>,
-    children: React.ReactNode
 };
 
-const Modal: FC<Props> = ({ active, setActive, children }) => {
+const Modal: FC<PropsWithChildren<Props>> = ({ active, setActive, children }) => {
     return (
         <div
             className={
-                active 
-                    ? 
-                        `${styles.modal} ${styles.modal_active}`
-                    : 
-                        styles.modal
+                classNames(styles.modal,
+                    { [styles.modal_active]: active })
                 }
             onClick={() => setActive(false)}
         >

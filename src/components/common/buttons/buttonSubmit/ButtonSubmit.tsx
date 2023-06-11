@@ -3,17 +3,17 @@ import style from "./buttonSubmit.module.scss";
 
 type Props = {
     id: string,
-    text: string
+    children: string
 };
 
-const ButtonSubmit: FC<Props> = ({ id, text }) => {
+const ButtonSubmit: FC<Props> = ({ id, children }) => {
     return (
         <button
             type="submit"
             className={style.button}
             id={id}
         >
-            {text}
+            {children}
         </button>
     );
 }

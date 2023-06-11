@@ -16,9 +16,8 @@ type FormData = yup.InferType<typeof aboutMeSchema>;
 
 const AboutMePage: FC = () => {
     const [active, setActive] = useState<boolean>(false);
-    const [nameWindow, setNameWindow] = useState<string>("");
     const [message, setMessage] = useState<string>("");
-    const [ postData ] = usePostDataMutation();
+    const [ postData, { isSuccess, isError } ] = usePostDataMutation();
     const dispatch = useAppDispatch();
     const { register, handleSubmit } = useForm<FormData>({
         resolver: yupResolver(aboutMeSchema)
@@ -37,11 +36,9 @@ const AboutMePage: FC = () => {
             if (result.status === "success") {
                 dispatch(clearStateData());
                 setMessage(result.message);
-                setNameWindow("success");
                 setActive(true);
             }
         } catch (error) {
-            setNameWindow("error");
             setActive(true);
         };
     };
@@ -60,20 +57,18 @@ const AboutMePage: FC = () => {
                     <p>{stringCount}/{maxStringCount}</p>
                 </div>
                 <div className={style.buttons_group}>
-                    <ButtonStepBack
-                        id="button-back"
-                        text="Назад"
-                    />
-                    <ButtonSubmit
-                        id="button-next"
-                        text="Отправить"
-                    />
+                    <ButtonStepBack id="button-back">
+                        Назад
+                    </ButtonStepBack>
+                    <ButtonSubmit id="button-next">
+                        Отправить
+                    </ButtonSubmit>
                 </div>
             </form>
-            {nameWindow === "success" &&
+            {isSuccess &&
                 <ModalSuccess active={active} setActive={setActive} message={message}/>
             }
-            {nameWindow === "error" &&
+            {isError &&
                 <ModalError active={active} setActive={setActive}/>
             }
         </div>

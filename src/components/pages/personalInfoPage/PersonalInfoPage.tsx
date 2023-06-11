@@ -8,19 +8,21 @@ import { getCreateUserData } from "../../../store/data/selector";
 import { createUserReceved } from "../../../store/data/data";
 import { stepIncrease } from "../../../store/step/step";
 import { sexOptions } from "../../../constants/sexOptions";
-import { schemaPersonalInfo } from "../../../constants/schema/personalnfoSchema";
+import { personalInfoSchema } from "../../../constants/schema/personalnfoSchema";
 import ButtonSubmit from "../../common/buttons/buttonSubmit/ButtonSubmit";
-import ButtonBack from "../../common/buttons/buttonBack/buttonBack";
+
 import TextFormInput from "../../common/inputs/textFormInput.tsx/TextFormInput";
 import SelectInput from "../../common/inputs/select/SelectInput";
 import style from "./personalInfoPage.module.scss";
+import ButtonBack from "../../common/buttons/buttonBack/buttonBack";
 
-export type FormData = yup.InferType<typeof schemaPersonalInfo>;
+
+export type FormData = yup.InferType<typeof personalInfoSchema>;
 
 const PersonalInfoPage:FC = () => {
     const dispatch = useDispatch();
     const methods = useForm<FormData>({
-        resolver: yupResolver(schemaPersonalInfo)
+        resolver: yupResolver(personalInfoSchema)
     });
     const { handleSubmit, formState: { errors } } = methods;
     console.log(errors);
@@ -70,14 +72,12 @@ const PersonalInfoPage:FC = () => {
                         <p className={style.error}>{errors.sex?.label?.message || ""}</p>
                     </div>
                     <div className={style.buttons_group}>
-                        <ButtonBack
-                            id="button-back"
-                            text="Назад"
-                        />
-                        <ButtonSubmit
-                            id="button-next"
-                            text="Далее"
-                        />
+                        <ButtonBack id="button-back">
+                            Назад
+                        </ButtonBack>
+                        <ButtonSubmit id="button-next">
+                            Далее
+                        </ButtonSubmit>
                     </div>
             </form>
         </FormProvider>

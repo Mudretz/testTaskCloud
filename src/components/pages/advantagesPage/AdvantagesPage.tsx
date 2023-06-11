@@ -82,14 +82,12 @@ const AdvantagesPage: FC = () => {
                     errorMessage={errors.radioOption?.message || ""}
                 />
                 <div className={style.buttons_group}>
-                    <ButtonStepBack
-                        id="button-back"
-                        text="Back"
-                    />
-                    <ButtonSubmit
-                        id="button-next"
-                        text="Далее"
-                    />
+                    <ButtonStepBack id="button-back">
+                        Back
+                    </ButtonStepBack>
+                    <ButtonSubmit id="button-next">
+                        Далее
+                    </ButtonSubmit>
                 </div>
             </form>
         </FormProvider>
