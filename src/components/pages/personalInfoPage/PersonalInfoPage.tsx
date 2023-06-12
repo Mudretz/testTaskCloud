@@ -9,8 +9,8 @@ import { createUserReceived } from "../../../store/data/data";
 import { stepIncrease } from "../../../store/step/step";
 import { sexOptions } from "../../../constants/sexOptions";
 import { personalInfoSchema } from "../../../constants/schema/personalnfoSchema";
-import ButtonSubmit from "../../common/buttons/buttonSubmit/ButtonSubmit";
-import ButtonBack from "../../common/buttons/buttonBack/ButtonBack";
+import { useNavigate } from "react-router-dom";
+import Button from "../../common/button/Button";
 import TextFormInput from "../../common/inputs/textFormInput.tsx/TextFormInput";
 import SelectInput from "../../common/inputs/select/SelectInput";
 import style from "./personalInfoPage.module.scss";
@@ -19,6 +19,8 @@ export type FormData = yup.InferType<typeof personalInfoSchema>;
 
 const PersonalInfoPage:FC = () => {
     const createUserData = useAppSelector(getCreateUserData);
+    const navigate = useNavigate();
+
     const dispatch = useDispatch();
     const methods = useForm<FormData>({
         defaultValues: {
@@ -34,6 +36,10 @@ const PersonalInfoPage:FC = () => {
     const onSubmit = (data: FormData): void => {
         dispatch(createUserReceived(data));
         dispatch(stepIncrease());
+    };
+
+    const handleClick = () => {
+        navigate(-1);
     };
 
     return (
@@ -71,12 +77,19 @@ const PersonalInfoPage:FC = () => {
                         <p className={style.error}>{errors.sex?.label?.message || ""}</p>
                     </div>
                     <div className={style.buttons_group}>
-                        <ButtonBack id="button-back">
+                        <Button
+                            id="button-back"
+                            onClick={handleClick}
+                            theme={"secondary"}
+                        >
                             Назад
-                        </ButtonBack>
-                        <ButtonSubmit id="button-next">
+                        </Button>
+                        <Button
+                            id="button-next"
+                            theme="primary"
+                        >
                             Далее
-                        </ButtonSubmit>
+                        </Button>
                     </div>
             </form>
         </FormProvider>

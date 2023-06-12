@@ -6,11 +6,10 @@ import { checkboxData, radioGroupData } from "../../../constants/dataInput";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { getAdvantagesData } from "../../../store/data/selector";
 import { advantagesReceived } from "../../../store/data/data";
-import { stepIncrease } from "../../../store/step/step";
+import { stepDecrease, stepIncrease } from "../../../store/step/step";
 import { advantagesPageSchema } from "../../../constants/schema/advantagesPageSchema";
 import TextInput from "../../common/inputs/textInput/TextInput";
-import ButtonSubmit from "../../common/buttons/buttonSubmit/ButtonSubmit";
-import ButtonStepBack from "../../common/buttons/buttonSubmitStep/ButtonStepBack";
+import Button from "../../common/button/Button";
 import Checkbox from "../../common/inputs/checkBox/CheckBox";
 import RadioGroup from "../../common/inputs/radioGroup/RadioGroup";
 import deleteIcon from "../../../assets/delete.svg";
@@ -39,6 +38,10 @@ const AdvantagesPage: FC = () => {
     const onSubmit = (data: FormData) => {
         dispatch(advantagesReceived(data));
         dispatch(stepIncrease());
+    };
+
+    const handleClick = () => {
+        dispatch(stepDecrease());
     };
 
     return (
@@ -81,12 +84,19 @@ const AdvantagesPage: FC = () => {
                     errorMessage={errors.radioOption?.message || ""}
                 />
                 <div className={style.buttons_group}>
-                    <ButtonStepBack id="button-back">
+                    <Button
+                        id="button-back"
+                        onClick={handleClick}
+                        theme={"secondary"}
+                    >
                         Back
-                    </ButtonStepBack>
-                    <ButtonSubmit id="button-next">
+                    </Button>
+                    <Button
+                        id="button-next"
+                        theme="primary"
+                    >
                         Далее
-                    </ButtonSubmit>
+                    </Button>
                 </div>
             </form>
         </FormProvider>

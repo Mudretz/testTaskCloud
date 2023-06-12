@@ -9,10 +9,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { stepReceived } from "../../../store/step/step";
 import { authorizationSchema } from "../../../constants/schema/authorizationPageSchema";
 import HeaderAuth from "../../layouts/HeaderAuth/HeaderAuth";
-import ButtonSubmit from "../../common/buttons/buttonSubmit/ButtonSubmit";
 import TextFormInput from "../../common/inputs/textFormInput.tsx/TextFormInput";
 import MaskPhoneInput from "../../common/inputs/maskPhoneInput/MaskPhoneInput";
 import style from "./authorizationPage.module.scss";
+import Button from "../../common/button/Button";
 
 type FormData = yup.InferType<typeof authorizationSchema>;
 
@@ -55,9 +55,12 @@ const AuthorizationPage: FC = () => {
                             placeHolder="tim.jennings@example.com"
                             errorMessage={errors.email?.message || ""}
                         />
-                        <ButtonSubmit id="button-start">
+                        <Button
+                            id="button-start"
+                            theme="primary"
+                        >
                             Начать
-                        </ButtonSubmit>
+                        </Button>
                     </form>
                 </FormProvider>
             </main>

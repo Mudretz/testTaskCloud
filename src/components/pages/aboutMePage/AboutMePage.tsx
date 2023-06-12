@@ -7,12 +7,11 @@ import { aboutMeReceived, clearStateData } from "../../../store/data/data";
 import { aboutMeSchema, maxStringCount} from "../../../constants/schema/aboutMePageSchema";
 import { usePostDataMutation } from "../../../services/apiReduxQuery";
 import { getAboutMeData } from "../../../store/data/selector";
-import ButtonStepBack from "../../common/buttons/buttonSubmitStep/ButtonStepBack";
-import ButtonSubmit from "../../common/buttons/buttonSubmit/ButtonSubmit";
+import { stepDecrease } from "../../../store/step/step";
+import Button from "../../common/button/Button";
 import ModalSuccess from "../../ui/modalSuccess/ModalSuccess";
 import ModalError from "../../ui/modalError/ModalError";
 import style from "./aboutMePage.module.scss";
-
 
 type FormData = yup.InferType<typeof aboutMeSchema>;
 
@@ -49,11 +48,22 @@ const AboutMePage: FC = () => {
         };
     };
 
+    const handleClick = () => {
+        dispatch(stepDecrease());
+    };
+
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className={style.form_item}>
-                    <p>About</p>
+                    <p>
+                        {isSuccess && active
+                            ? 
+                                "О себе" 
+                            : 
+                                "About"
+                        }
+                    </p>
                     <textarea
                         className={style.text_area}
                         {...register("about")}
@@ -63,12 +73,19 @@ const AboutMePage: FC = () => {
                     <p>{stringCount}/{maxStringCount}</p>
                 </div>
                 <div className={style.buttons_group}>
-                    <ButtonStepBack id="button-back">
+                    <Button
+                        id="button-back"
+                        onClick={handleClick}
+                        theme={"secondary"}
+                    >
                         Назад
-                    </ButtonStepBack>
-                    <ButtonSubmit id="button-next">
+                    </Button>
+                    <Button
+                        id="button-next"
+                        theme="primary"
+                    >
                         Отправить
-                    </ButtonSubmit>
+                    </Button>
                 </div>
             </form>
             {isSuccess &&

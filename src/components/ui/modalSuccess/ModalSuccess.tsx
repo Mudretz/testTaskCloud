@@ -1,9 +1,10 @@
 import { FC } from "react";
 import successIcon from "../../../assets/success.svg";
 import Modal from "../../common/modalWindow/ModalWindow";
-import ButtonSubmit from "../../common/buttons/buttonSubmit/ButtonSubmit";
+
 import style from "./modalSucces.module.scss";
 import { useNavigate } from "react-router-dom";
+import Button from "../../common/button/Button";
 
 type Props = {
     active: boolean,
@@ -24,9 +25,13 @@ const ModalSuccess: FC<Props> = ({ active, setActive, message }) => {
                 <p>{message}</p>
                 <img src={successIcon} alt="успешно" />
                 <div onClick={handleClick}>
-                    <ButtonSubmit id="button-to-main">
+                    <Button
+                        id="button-to-main"
+                        onClick={handleClick}
+                        theme="primary"
+                    >
                         На главную
-                    </ButtonSubmit>
+                    </Button>
                 </div>
             </div>
         </Modal>

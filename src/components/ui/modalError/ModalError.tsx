@@ -1,7 +1,7 @@
 import { FC } from "react";
 import errorIcon from "../../../assets/error.svg";
 import Modal from "../../common/modalWindow/ModalWindow";
-import ButtonSubmit from "../../common/buttons/buttonSubmit/ButtonSubmit";
+import Button from "../../common/button/Button";
 import style from "./modalError.module.scss";
 
 type Props = {
@@ -21,9 +21,13 @@ const ModalError: FC<Props> = ({ active, setActive }) => {
                 <p>Ошибка</p>
                 <img src={errorIcon} alt="успешно" />
                 <div className={style.button} onClick={handleClick}>
-                    <ButtonSubmit id="button-to-main">
+                    <Button
+                        id="button-to-main"
+                        onClick={handleClick}
+                        theme="primary"
+                    >
                         Закрыть
-                    </ButtonSubmit>
+                    </Button>
                 </div>
             </div>
         </Modal>
