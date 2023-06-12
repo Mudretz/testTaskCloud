@@ -5,7 +5,7 @@ import style from "./radioGroup.module.scss";
 type Props = {
     name: string,
     nameInput: string,
-    data: string[],
+    data: number[],
     errorMessage: string
 };
 
