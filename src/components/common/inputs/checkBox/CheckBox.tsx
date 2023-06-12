@@ -16,9 +16,14 @@ const Checkbox: FC<Props> = ({ name, nameInput, data, errorMessage }) => {
         <div className={style.form_item}>
             <p>{name}</p>
             <div className={style.input_list}>
-                {data.map((item) => (
+                {data.map((item, index) => (
                     <label key={item}>
-                        <input type="checkbox" value={item} {...register(nameInput)} className={style.input}/>
+                        <input
+                            id={`field-checkbox-group-option-${index + 1}`}
+                            type="checkbox" value={item}
+                            className={style.input}
+                            {...register(nameInput)}
+                        />
                         {item}
                     </label>
                 ))}

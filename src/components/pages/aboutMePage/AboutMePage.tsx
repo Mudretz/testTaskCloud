@@ -64,6 +64,7 @@ const AboutMePage: FC = () => {
                         }
                     </p>
                     <textarea
+                        id="field-about"
                         className={style.text_area}
                         placeholder="Placeholder"
                         {...register("about")}
@@ -89,7 +90,7 @@ const AboutMePage: FC = () => {
                         Назад
                     </Button>
                     <Button
-                        id="button-next"
+                        id="button-send"
                         theme="primary"
                     >
                         Отправить

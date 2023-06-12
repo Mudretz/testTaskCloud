@@ -16,9 +16,10 @@ const RadioGroup: FC<Props> = ({ name, nameInput, data, errorMessage }) => {
         <div className={style.form_item}>
             <p>{name}</p>
             <div className={style.input_list}>
-                {data.map((item) => (
+                {data.map((item, index) => (
                     <label key={item}>
                         <input
+                            id={`field-radio-group-option-${index + 1}`}
                             type="radio"
                             value={item}
                             {...register(nameInput)}

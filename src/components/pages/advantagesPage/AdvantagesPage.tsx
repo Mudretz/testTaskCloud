@@ -52,23 +52,25 @@ const AdvantagesPage: FC = () => {
                     {fields.map((field, index) => (
                         <div key={field.id}>
                             <TextInput
+                                id={`field-advatages-${index + 1}`}
                                 name={`advantages[${index}].advantage`}
-                                id={field.id}
                             />
-                            <img className={style.delete} src={deleteIcon} alt="удалить" onClick={() => remove(index)}/>
+                            <img id={`button-remove-${index + 1}`} className={style.delete} src={deleteIcon} alt="удалить" onClick={() => remove(index)}/>
                             {errors.advantages && (
                                 <p className={style.error_input}>{errors.advantages[index]?.advantage?.message}</p>
                             )}
                         </div>
                     ))}
-                    <div 
+                    <button
+                        id="button add"
+                        type="button"
                         className={style.plus_icon}
                         onClick={() => append({
                             advantage: ""
                         })}
                     >
                         <img src={plusIcon} alt="добавить" />
-                    </div>
+                    </button>
                 </div>
                 <Checkbox
                     name="Checkbox group"

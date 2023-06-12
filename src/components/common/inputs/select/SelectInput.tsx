@@ -23,7 +23,8 @@ const SelectInput: FC<Props> = ({ name, placeHolder, id, options }) => {
                 field: { value, onChange }
             }) => (
                 <Select
-                    id={id}
+                    inputId={id}
+                    instanceId={`field-sex-option-${value}`}
                     options={options}
                     value={value}
                     onChange={onChange}

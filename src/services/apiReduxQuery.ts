@@ -13,9 +13,10 @@ export const apiReduxQuery = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: "https://api.sbercloud.ru/content/v1/"}),
     endpoints: (build) => ({
         postData: build.mutation<IPostDataResponse, IPostDataBody>({
-            query: () => ({
+            query: (body) => ({
                 url: "bootcamp/frontend",
                 method: "POST",
+                body
             })
         })
     })
