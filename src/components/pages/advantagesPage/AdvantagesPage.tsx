@@ -57,8 +57,8 @@ const AdvantagesPage: FC = () => {
                                 id={field.id}
                             />
                             <img className={style.delete} src={deleteIcon} alt="удалить" onClick={() => remove(index)}/>
-                            {errors.advantages && errors.advantages[index] && errors.advantages[index]?.advantage && (
-                                <p className={style.error_input}>{errors.advantages[index]?.advantage?.message || ""}</p>
+                            {errors.advantages && (
+                                <p className={style.error_input}>{errors.advantages[index]?.advantage?.message}</p>
                             )}
                         </div>
                     ))}
