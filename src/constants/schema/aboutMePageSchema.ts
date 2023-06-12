@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 export const maxStringCount = 200;
-export const aboutMeSchema = yup.object().shape({
+export const aboutMeSchema = yup.object({
     about:
         yup
             .string()

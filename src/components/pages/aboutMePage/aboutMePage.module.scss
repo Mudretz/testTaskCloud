@@ -28,3 +28,12 @@
     display: flex;
     justify-content: space-between;
 }
+
+.error {
+    color: $error;
+}
+
+.under_text {
+    font-size: 12px;
+    color: $black-48;
+}

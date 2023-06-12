@@ -49,21 +49,18 @@ const PersonalInfoPage:FC = () => {
                         id="field-nickname"
                         name="Nickname"
                         nameInput="nickname"
-                        placeHolder="Placeholder"
                         errorMessage={errors.nickname?.message || ""}
                     />
                     <TextFormInput 
                         id="field-name"
                         name="Name"
                         nameInput="name"
-                        placeHolder="Placeholder"
                         errorMessage={errors.name?.message || ""}
                     />
                     <TextFormInput 
                         id="field-sername"
                         name="Sername"
                         nameInput="sername"
-                        placeHolder="Placeholder"
                         errorMessage={errors.sername?.message || ""}
                     />
                     <div className={`${style.form_item} ${style.select}`}>

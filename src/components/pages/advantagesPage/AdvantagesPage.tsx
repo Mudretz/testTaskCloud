@@ -53,7 +53,6 @@ const AdvantagesPage: FC = () => {
                         <div key={field.id}>
                             <TextInput
                                 name={`advantages[${index}].advantage`}
-                                placeHolder="Placeholder"
                                 id={field.id}
                             />
                             <img className={style.delete} src={deleteIcon} alt="удалить" onClick={() => remove(index)}/>

@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -22,17 +22,16 @@ const AboutMePage: FC = () => {
     const [ postData, { isSuccess, isError } ] = usePostDataMutation();
     const aboutMeData = useAppSelector(getAboutMeData);
     const dispatch = useAppDispatch();
-    const { register, handleSubmit } = useForm<FormData>({
+    const { register, handleSubmit, watch, formState: { errors } } = useForm<FormData>({
         resolver: yupResolver(aboutMeSchema),
         defaultValues: {
             about: aboutMeData
         }
     });
-
-    const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        const inputText = e.target.value;
-        setStringCount(inputText.length);
-    };
+    
+    useEffect(() => {
+        setStringCount(watch("about").length);
+    }, [watch("about")])
 
     const onSubmit = async (data: FormData) => {
         dispatch(aboutMeReceived(data.about));
@@ -66,11 +65,20 @@ const AboutMePage: FC = () => {
                     </p>
                     <textarea
                         className={style.text_area}
+                        placeholder="Placeholder"
                         {...register("about")}
-                        onChange={handleTextAreaChange}
-                    >         
-                    </textarea>
+                    />         
                     <p>{stringCount}/{maxStringCount}</p>
+                    {errors.about
+                        ?
+                            <p className={style.error}>
+                                {errors.about?.message}
+                            </p>
+                        :
+                            <p className={style.under_text}>
+                                Tip
+                            </p>
+                    }           
                 </div>
                 <div className={style.buttons_group}>
                     <Button

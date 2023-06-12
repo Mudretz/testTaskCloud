@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const advantagesPageSchema = yup.object().shape({
+export const advantagesPageSchema = yup.object({
     advantages: yup.array().of(
         yup
             .object().shape({

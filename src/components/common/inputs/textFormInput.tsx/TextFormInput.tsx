@@ -6,11 +6,12 @@ type Props = {
     id: string,
     name: string,
     nameInput: string,
-    placeHolder: string,
-    errorMessage: string
+    placeholder?: string,
+    errorMessage: string,
+    underText?: string
 };
 
-const TextFormInput: FC<Props> = ({ id, name, nameInput, placeHolder, errorMessage }) => {
+const TextFormInput: FC<Props> = ({ id, name, nameInput, placeholder, errorMessage, underText = "Tip" }) => {
 
     return (
         <div className={style.form_item}>
@@ -18,11 +19,18 @@ const TextFormInput: FC<Props> = ({ id, name, nameInput, placeHolder, errorMessa
             <TextInput
                 id={id}
                 name={nameInput}
-                placeHolder={placeHolder}
+                placeholder={placeholder}
             />
-            <p className={style.error}>
-                {errorMessage}
-            </p>
+            {errorMessage
+                ?
+                    <p className={style.error}>
+                        {errorMessage}
+                    </p>
+                :
+                    <p className={style.under_text}>
+                        {underText}
+                    </p>
+            }
         </div>
     );
 };

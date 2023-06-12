@@ -52,8 +52,9 @@ const AuthorizationPage: FC = () => {
                             id="field-email"
                             name="Email"
                             nameInput="email"
-                            placeHolder="tim.jennings@example.com"
+                            placeholder="tim.jennings@example.com"
                             errorMessage={errors.email?.message || ""}
+                            underText=""
                         />
                         <Button
                             id="button-start"
