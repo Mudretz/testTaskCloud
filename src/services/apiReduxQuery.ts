@@ -7,11 +7,9 @@ interface IPostDataBody {
     name: string,
     serName: string,
     sex: string,
-    advantages: Array<{
-        [key: string]: string
-    }>,
+    advantages: string[],
     checkboxes: number[],
-    radioOption: string,
+    radioOption: number,
     aboutMe: string
 };
 

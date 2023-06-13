@@ -22,10 +22,12 @@ export interface ISexOption {
     label: string;
 };
 
+export interface IAdvantagesInputs {
+    [key: string]: string
+}
+
 export interface IAdvantagesData {
-    advantages: Array<{
-        [key: string]: string
-    }>,
+    advantages: IAdvantagesInputs[],
     checkboxes: Array<number>,
     radioOption: string
 };

@@ -13,6 +13,7 @@ import Button from "../../common/button/Button";
 import ModalSuccess from "../../ui/modalSuccess/ModalSuccess";
 import ModalError from "../../ui/modalError/ModalError";
 import style from "./aboutMePage.module.scss";
+import { transformToArrayString } from "../../../utils/transformToArrayString";
 
 type FormData = yup.InferType<typeof aboutMeSchema>;
 
@@ -51,7 +52,7 @@ const AboutMePage: FC = () => {
                     name: name,
                     serName: sername,
                     sex: sex.value,
-                    advantages: advantages,
+                    advantages: transformToArrayString(advantages),
                     checkboxes: checkboxes,
                     radioOption: radioOption,
                     aboutMe: data.about
