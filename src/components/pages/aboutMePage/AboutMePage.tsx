@@ -6,8 +6,9 @@ import { useAppDispatch, useAppSelector } from "../../../store/hook/hook";
 import { aboutMeReceived, clearStateData } from "../../../store/data/data";
 import { aboutMeSchema, maxStringCount} from "../../../constants/schema/aboutMePageSchema";
 import { usePostDataMutation } from "../../../services/apiReduxQuery";
-import { getAboutMeData } from "../../../store/data/selector";
+import { getAboutMeData, getState } from "../../../store/data/selector";
 import { stepDecrease } from "../../../store/step/step";
+import { useNavigate } from "react-router-dom";
 import Button from "../../common/button/Button";
 import ModalSuccess from "../../ui/modalSuccess/ModalSuccess";
 import ModalError from "../../ui/modalError/ModalError";
@@ -20,8 +21,10 @@ const AboutMePage: FC = () => {
     const [message, setMessage] = useState<string>("");
     const [stringCount, setStringCount] = useState(0);
     const [ postData, { isSuccess, isError } ] = usePostDataMutation();
-    const aboutMeData = useAppSelector(getAboutMeData);
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    const aboutMeData = useAppSelector(getAboutMeData);
+    const state = useAppSelector(getState);
     const { register, handleSubmit, watch, formState: { errors } } = useForm<FormData>({
         resolver: yupResolver(aboutMeSchema),
         defaultValues: {
@@ -35,20 +38,45 @@ const AboutMePage: FC = () => {
 
     const onSubmit = async (data: FormData) => {
         dispatch(aboutMeReceived(data.about));
-        try {
-            const result = await postData({}).unwrap();
-            if (result.status === "success") {
-                dispatch(clearStateData());
-                setMessage(result.message);
+        const { authData, createUserData, advantagesData } = state;
+        const { nickname, name, sername, sex } = createUserData;
+        const { advantages, checkboxes, radioOption } = advantagesData;
+
+        if (sex) {
+            try {
+                const result = await postData({
+                    phone: authData.phone,
+                    email: authData.email,
+                    nickname: nickname,
+                    name: name,
+                    serName: sername,
+                    sex: sex.value,
+                    advantages: advantages,
+                    checkboxes: checkboxes,
+                    radioOption: radioOption,
+                    aboutMe: data.about
+                }).unwrap();
+                if (result.status === "success") {
+                    setMessage(result.message);
+                    setActive(true);
+                }
+            } catch (error) {
                 setActive(true);
-            }
-        } catch (error) {
-            setActive(true);
-        };
+            };
+        }
     };
 
-    const handleClick = () => {
+    const handleClickGoBack = () => {
         dispatch(stepDecrease());
+    };
+
+    const handleClickSucces = () => {
+        navigate("/testTaskCloud");
+        dispatch(clearStateData());
+    };
+
+    const handleClickClose = () => {
+        setActive(false)
     };
 
     return (
@@ -84,7 +112,7 @@ const AboutMePage: FC = () => {
                 <div className={style.buttons_group}>
                     <Button
                         id="button-back"
-                        onClick={handleClick}
+                        onClick={handleClickGoBack}
                         theme={"secondary"}
                     >
                         Назад
@@ -98,10 +126,19 @@ const AboutMePage: FC = () => {
                 </div>
             </form>
             {isSuccess &&
-                <ModalSuccess active={active} setActive={setActive} message={message}/>
+                <ModalSuccess
+                    active={active}
+                    setActive={setActive}
+                    message={message}
+                    onClick={handleClickSucces}
+                />
             }
             {isError &&
-                <ModalError active={active} setActive={setActive}/>
+                <ModalError
+                    active={active}
+                    setActive={setActive}
+                    onClick={handleClickClose}
+                />
             }
         </div>
     );

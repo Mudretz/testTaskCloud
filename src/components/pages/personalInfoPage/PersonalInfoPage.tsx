@@ -20,7 +20,6 @@ export type FormData = yup.InferType<typeof personalInfoSchema>;
 const PersonalInfoPage:FC = () => {
     const createUserData = useAppSelector(getCreateUserData);
     const navigate = useNavigate();
-
     const dispatch = useDispatch();
     const methods = useForm<FormData>({
         defaultValues: {
@@ -68,7 +67,7 @@ const PersonalInfoPage:FC = () => {
                         <SelectInput
                             id="field-sex"
                             name="sex"
-                            placeHolder="Не выбрано"
+                            placeholder="Не выбрано"
                             options={sexOptions}
                         />
                         <p className={style.error}>{errors.sex?.label?.message || ""}</p>

@@ -4,7 +4,7 @@ import Select from "react-select";
 
 type Props = {
     name: string,
-    placeHolder: string,
+    placeholder: string,
     id: string,
     options: Array<{
         value: string,
@@ -12,7 +12,7 @@ type Props = {
     }>
 };
 
-const SelectInput: FC<Props> = ({ name, placeHolder, id, options }) => {
+const SelectInput: FC<Props> = ({ name, placeholder, id, options }) => {
     const { control } = useFormContext();
 
     return (
@@ -29,7 +29,7 @@ const SelectInput: FC<Props> = ({ name, placeHolder, id, options }) => {
                     value={value}
                     onChange={onChange}
                     classNamePrefix="react-select"
-                    placeholder={placeHolder}
+                    placeholder={placeholder}
                     isSearchable={false}
                  />
             )}

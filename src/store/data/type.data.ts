@@ -14,10 +14,12 @@ export interface ICreateUserData {
     nickname: string,
     name: string,
     sername: string,
-    sex: {
-        value: string,
-        label: string
-    }
+    sex: ISexOption | undefined
+};
+
+export interface ISexOption {
+    value: string;
+    label: string;
 };
 
 export interface IAdvantagesData {

@@ -7,23 +7,20 @@ import style from "./modalError.module.scss";
 type Props = {
     active: boolean,
     setActive: React.Dispatch<React.SetStateAction<boolean>>
+    onClick?: () => void 
 };
 
-const ModalError: FC<Props> = ({ active, setActive }) => {
-
-    const handleClick = () => {
-        setActive(false);
-    };
+const ModalError: FC<Props> = ({ active, setActive, onClick }) => {
 
     return (
         <Modal active={active} setActive={setActive}>
             <div className={style.container}>
                 <p>Ошибка</p>
                 <img src={errorIcon} alt="успешно" />
-                <div className={style.button} onClick={handleClick}>
+                <div className={style.button}>
                     <Button
                         id="button-to-main"
-                        onClick={handleClick}
+                        onClick={onClick}
                         theme="primary"
                     >
                         Закрыть

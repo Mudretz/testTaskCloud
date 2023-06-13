@@ -1,6 +1,18 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 interface IPostDataBody {
+    phone: string,
+    email: string,
+    nickname: string,
+    name: string,
+    serName: string,
+    sex: string,
+    advantages: Array<{
+        [key: string]: string
+    }>,
+    checkboxes: number[],
+    radioOption: string,
+    aboutMe: string
 };
 
 interface IPostDataResponse {

@@ -1,5 +1,9 @@
 import { RootState } from "../store";
-import { IAdvantagesData, IAuthData, ICreateUserData } from "./type.data";
+import { IAdvantagesData, IAuthData, ICreateUserData, IDataState } from "./type.data";
+
+export const getState = (state: RootState): IDataState => {
+    return state.data
+};
 
 export const getAuthData = (state: RootState): IAuthData => {
     return state.data.authData;
