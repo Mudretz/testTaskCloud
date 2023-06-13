@@ -54,7 +54,7 @@ const AboutMePage: FC = () => {
                     sex: sex.value,
                     advantages: transformToArrayString(advantages),
                     checkboxes: checkboxes,
-                    radioOption: radioOption,
+                    radioOption: Number(radioOption),
                     aboutMe: data.about
                 }).unwrap();
                 if (result.status === "success") {
