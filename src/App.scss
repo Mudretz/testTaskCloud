@@ -1,4 +1,8 @@
 @import "../src/constants/colors.scss";
+@font-face {
+    font-family: "SB Sans Interface";
+    src: url(./assets/fonts/SBSansInterface-Regular.woff2) format("woff2");
+}
 
 .container {
     padding-top: 24px;
@@ -7,7 +11,7 @@
     background-color: $grey;
     display: flex;
     justify-content: center;
-    font-family: sans-serif;
+    font-family: "SB Sans Interface";
     color: $text-color;
 }
 

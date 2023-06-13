@@ -20,7 +20,8 @@ const Checkbox: FC<Props> = ({ name, nameInput, data, errorMessage }) => {
                     <label key={item}>
                         <input
                             id={`field-checkbox-group-option-${index + 1}`}
-                            type="checkbox" value={item}
+                            type="checkbox"
+                            value={item}
                             className={style.input}
                             {...register(nameInput)}
                         />
