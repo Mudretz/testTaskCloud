@@ -15,8 +15,27 @@
     color: $text-color;
 }
 
-.react-select { 
+.react-select {
+    &__control {
+        &--menu-is-open {
+            border: 2px solid $purple !important;
+        }
+
+        &--is-focused {
+            border: 2px solid $purple !important;
+            box-shadow: none;
+        }
+    }
+
     &__indicator-separator {
         width: 0px !important;
+    }
+
+    
+    &__option {
+
+        &--is-selected {
+            background-color: $purple !important;
+        }
     }
 }
