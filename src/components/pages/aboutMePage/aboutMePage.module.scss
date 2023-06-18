@@ -10,9 +10,10 @@
     padding: 12px 12px 12px 12px;
     width: 680px;
     height: 84px;
+    max-height: 84px;
+    resize: vertical;
     border: 1.5px solid $black-16;
     border-radius: 4px;
-    resize: none;
 
     &:focus {
         outline-color: $purple;
