@@ -1,7 +1,7 @@
 # Тестовое задание
 
 Стек техногологий: HTML, CSS, SCSS, SCSS modules, TypeScript, React, Redux Toolkit. <br/>
-Библиотеки: React hook form, ClassNames(clsx), Material UI, React transition group.<br/>
+Библиотеки: React hook form, ClassNames<br/>
 
 ## Информация:
 1) Для валидации полей использовал Yup и React hook form<br/>
