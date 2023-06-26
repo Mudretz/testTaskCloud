@@ -3,7 +3,7 @@ import { IPostDataBody, IPostDataResponse } from "./apiReduxQuery.types";
 
 export const apiReduxQuery = createApi({
     reducerPath: "api",
-    baseQuery: fetchBaseQuery({ baseUrl: "https://api.sbercloud.ru/content/v1/"}),
+    baseQuery: fetchBaseQuery({ baseUrl: "https://api.sbercloud.ru/content/v1/asdsad"}),
     endpoints: (build) => ({
         postData: build.mutation<IPostDataResponse, IPostDataBody>({
             query: (body) => ({

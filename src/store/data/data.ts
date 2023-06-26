@@ -3,8 +3,8 @@ import { IAdvantagesData, IAuthData, ICreateUserData, IDataState } from "./type.
 
 const initialState: IDataState = {
     authData: {
-        phone: "+7 (914) 348-93-89",
-        email: "zham.drag@gmail.com"
+        phone: "",
+        email: ""
     },
     createUserData: {
         nickname: "",
